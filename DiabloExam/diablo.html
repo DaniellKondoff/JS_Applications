@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script src="scripts/crud.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/utilities.js"></script>
+    <script src="scripts/views.js"></script>
+    <script src="scripts/diablo.js"></script>
+    <link rel="stylesheet" href="styles/calendar-css.css">
+    <title>Diablo</title>
+</head>
+<body>
+    <main>
+        <header id="menu">
+            <a href="#" id="linkHome">Home</a>
+            <a href="#" id="linkLogin">Login</a>
+            <a href="#" id="linkRegister">Register</a>
+            <a href="#" id="linkListHeroes">Heroes</a>
+            <a href="#" id="linkListMyHeroes">My Hero</a>
+            <a href="#" id="linkLogout">Logout</a>
+        </header>
+
+        <section id="loadingBox">Loading ...</section>
+        <section id="infoBox">Info</section>
+        <section id="errorBox">Error</section>
+
+        <section id="viewGuestHome">
+            <h1>Welcome to Diablo!</h1>
+            <p>Please <a href="#" id="linkHomeToLogin">login</a> to access the site.</p>
+        </section>
+
+        <section id="viewLogin">
+            <h1>Please login</h1>
+            <form id="formLogin">
+                <div>Username:</div>
+                <div><input type="text" name="username" required /></div>
+                <div>Password:</div>
+                <div><input type="password" name="passwd" required /></div>
+                <div>
+                    <input type="button" id="buttonLoginUser" value="Login" />
+                    <span>or</span>
+                    <a href="#" id="linkLoginToRegister">Register</a>
+                </div>
+            </form>
+        </section>
+
+        <section id="viewRegister">
+            <h1>Please register here</h1>
+            <form id="formRegister">
+                <div>Username:</div>
+                <div><input type="text" name="username" required /></div>
+                <div>Password:</div>
+                <div><input type="password" name="passwd" required /></div>
+                <div>Confirm Password:</div>
+                <div><input type="password" name="passwd-confirm" required /></div>
+                <div>
+                    <input type="button"id="buttonRegisterUser" value="Register" />
+                    <span>or</span>
+                    <a href="#" id="linkRegToLogin">Login</a>
+                </div>
+            </form>
+        </section>
+
+        <section id="viewUserHome">
+            <h1>Welcome,<span id="loggedInUser"></span></h1>
+            <p>Navigate to <a href="#" id="linkHomeToHeroList">your hero list</a> or add a <a href="#" id="linkHomeToAddHero">new Hero</a>.</p>
+        </section>
+
+        <section id="listHeroes">
+            <h1>Heroe</h1>
+            <div  id="listHero">
+                <h2><a href="#" id="linkToAmazonDetails">Amazon</a></h2>
+                <h2><a href="#" id="linkToBarbarianetails">Barbarian</a></h2>
+            </div>
+        </section>
+
+        <section id="addHero">
+            <h1>Add new Hero</h1>
+            <form id="formCreateLecture">
+                <div>Name:</div>
+                <div><input type="text" name="name" required /></div>
+                <h4>Class:</h4>
+                <div class="row" id="select-class">
+                    <div class="hero-class col-md-5">
+                        <label for="Barbarian" class="form-control">Barbarian</label>
+
+                        <p>Attack points: 50</p>
+
+                        <p>Defense points: 30</p>
+
+                        <p>Life points: 100</p>
+                        <input type="radio" value="571639b024ccea3d35743305" name="class" id="Barbarian" class="form-control">
+                    </div>
+                    <div class="hero-class col-md-5">
+                        <label for="Amazon" class="form-control">Amazon</label>
+
+                        <p>Attack points: 20</p>
+
+                        <p>Defense points: 80</p>
+
+                        <p>Life points: 50</p>
+                        <input type="radio" value="571639c9eaeab62c29cdc8ab" name="class" id="Amazon" class="form-control">
+                    </div>
+                </div>
+                <div><input type="button" id="buttonCreateHero" value="Add" /></div>
+                <div><input type="button" id="buttonCancelCreateLecture" value="Cancel" /></div>
+            </form>
+        </section>
+
+        <section id="listMyHeroes">
+            <h1>Hero</h1>
+            <div id="hero-detailed">
+                <div class="col-md-4">
+
+                    <h2>alaska</h2>
+
+                    <p>
+                        Attack points: 20
+                    </p>
+
+                    <p>
+                        Defense points: 94
+                    </p>
+
+                    <p>
+                        Life: 58
+                    </p>
+
+                </div>
+            </div>
+            <p>
+                <a href="#" id="linkToStore">Store</a>
+            </p>
+        </section>
+
+        <section id="listStore">
+            <h1>Store</h1>
+            <div id="store">
+                <div class="col-md-3">
+                    <h3>Magic boots</h3>
+
+                    <p>
+                        Type: boots
+                    </p>
+
+                    <p>
+                        Attack points: 0
+                    </p>
+
+                    <p>
+                        Defense points: 10
+                    </p>
+
+                    <p>
+                        Life points: 3
+                    </p>
+                    <p>
+                        <button class="buy btn btn-md btn-default" data-id="57163d85d9da3da95abb2fd7" data-type="boots">Buy</button>
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <h3>Kasketa na kasskata</h3>
+
+                    <p>
+                        Type: head
+                    </p>
+
+                    <p>
+                        Attack points: 0
+                    </p>
+
+                    <p>
+                        Defense points: 14
+                    </p>
+
+                    <p>
+                        Life points: 8
+                    </p>
+                    <p>
+                        <button class="buy btn btn-md btn-default" data-id="57163f5624ccea3d35743e2a" data-type="head">Buy</button>
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <h3>Silver boots</h3>
+
+                    <p>
+                        Type: boots
+                    </p>
+
+                    <p>
+                        Attack points: 2
+                    </p>
+
+                    <p>
+                        Defense points: 7
+                    </p>
+
+                    <p>
+                        Life points: 5
+                    </p>
+                    <p>
+                        <button class="buy btn btn-md btn-default" data-id="5717afa7a86beb5379c4b1a5" data-type="boots">Buy</button>
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <h3>Golden boots</h3>
+
+                    <p>
+                        Type: boots
+                    </p>
+
+                    <p>
+                        Attack points: 13
+                    </p>
+
+                    <p>
+                        Defense points: 2
+                    </p>
+
+                    <p>
+                        Life points: 20
+                    </p>
+                    <p>
+                        <button class="buy btn btn-md btn-default" data-id="5717afc931508b1b1c8a5884" data-type="boots">Buy</button>
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <h3>Baals boots</h3>
+
+                    <p>
+                        Type: boots
+                    </p>
+
+                    <p>
+                        Attack points: 20
+                    </p>
+
+                    <p>
+                        Defense points: 15
+                    </p>
+
+                    <p>
+                        Life points: 14
+                    </p>
+                    <p>
+                        <button class="buy btn btn-md btn-default" data-id="5717b03431508b1b1c8a5956" data-type="boots">Buy</button>
+                    </p>
+                </div>
+            </div>
+        </section>
+    <script>
+        startApp();
+    </script>
+    </main>
+</body>
+</html>

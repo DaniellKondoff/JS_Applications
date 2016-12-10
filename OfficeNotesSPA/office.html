@@ -1,0 +1,148 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Office notes</title>
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script src="scripts/officeNotes.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/css.css" />
+</head>
+<body>
+<header>
+    <h1>Office notes</h1>
+</header>
+
+<main>
+    <header id="menu">
+        <a href="#" id="linkHome">Home</a>
+        <a href="#" id="linkListNotes">Office Notes</a>
+        <a href="#" id="linkListMyNotes">My Notes</a>
+        <a href="#" id="linkCreateNote">Add Note</a>
+        <a href="#" id="linkLogout">Logout</a>
+    </header>
+
+    <section id="loadingBox">Loading ...</section>
+    <section id="infoBox">Info</section>
+    <section id="errorBox">Error</section>
+
+    <section id="viewHome">
+        <h1>Welcome,<span id="loggedInUser"></span></h1>
+        <p>Please use the navigation menu on the TOP.</p>
+    </section>
+
+    <section id="dialog-box">
+        <h1>Welcome</h1>
+        <div><input type="button" id="buttonLinkLoginUser" value="Login" /></div>
+        <div><input type="button" id="buttonLinkRegisterUser" value="Register" /></div>
+    </section>
+
+    <section id="viewLogin">
+        <h1>Please login</h1>
+        <form id="formLogin">
+            <div>Username:</div>
+            <div><input type="text" name=
+                    "username" required /></div>
+            <div>Password:</div>
+            <div><input type="password"
+                        name="passwd" required /></div>
+            <div><input type="button"
+                        id="buttonLoginUser" value="Login" /></div>
+        </form>
+    </section>
+
+    <section id="viewRegister">
+        <h1>Please register here</h1>
+        <form id="formRegister">
+            <div>Username:</div>
+            <div><input type="text" name=
+                    "username" required /></div>
+            <div>Password:</div>
+            <div><input type="password"
+                        name="passwd" required /></div>
+            <div>Full name: </div>
+            <div><input type="text" name="fullname" required/></div>
+            <div><input type="button"
+                        id="buttonRegisterUser" value="Register" /></div>
+        </form>
+    </section>
+
+
+    <section id="listItems">
+        <h1>List Notes</h1>
+        <ul id="listItem">
+            <li class="item" data-id="note_id">
+                <a href="#">
+                    <h2 class="title">Note Title#1</h2>
+                    <p class="text">Note Text#1</p>
+                    <div class="author" title="author">Author</div>
+                    <div class="deadline" title="deadline">01-02-1990</div>
+                </a>
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+            </li>
+            <li class="item" data-id="note_id">
+                <a href="#">
+                    <h2 class="title">Note Title#2</h2>
+                    <p class="text">Note Text#2</p>
+                    <div class="author" title="author">Author2</div>
+                    <div class="deadline" title="deadline">02-02-1990</div>
+                </a>
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+            </li>
+        </ul>
+    </section>
+
+    <section id="createNote">
+        <h1>Add new note</h1>
+        <form id="formCreateNote">
+            <div>Title:</div>
+            <div><input type="text" name="title" required /></div>
+            <div>Text:</div>
+            <div><input type="text" name="text" required /></div>
+            <div>Deadline:</div>
+            <div><input type="date" name="deadline" required /></div>
+            <div><input type="button"id="buttonCreateNote" value="Add note" /></div>
+        </form>
+    </section>
+
+    <section id="editNote">
+        <h1>Add new note</h1>
+        <form id="editEditNote">
+            <div><input type="hidden" name="id" required /></div>
+            <div><input type="hidden" name="publisher" required /></div>
+            <div>Title:</div>
+            <div><input type="text" name="title" required /></div>
+            <div>Text:</div>
+            <div><input type="text" name="text" required /></div>
+            <div>Deadline:</div>
+            <div><input type="date" name="deadline" required /></div>
+            <div><input type="button"id="buttonEditNote" value="Edit note" /></div>
+        </form>
+    </section>
+
+    <section id="deleteNoteView">
+        <h1>Delete note</h1>
+        <form id="formDeleteNote">
+            <div><input type="hidden" name="id" required /></div>
+            <div><input type="hidden" name="publisher" required /></div>
+            <div>Title:</div>
+            <div><input type="text" name="title" disabled /></div>
+            <div>Text:</div>
+            <div><input type="text" name="text" disabled /></div>
+            <div>Deadline:</div>
+            <div><input type="date" name="deadline" disabled /></div>
+            <div><input type="button"id="buttonDeleteNote" value="Delete note" /></div>
+            <div><input type="button"id="buttonCancelDeleteNote" value="Cancel" /></div>
+        </form>
+    </section>
+
+    <script>
+        startApp();
+    </script>
+
+</main>
+
+<footer>&copy; 2015 by SoftUni Foundation, No Rights Reserved</footer>
+</body>
+
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script src="scripts/crud.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/utilities.js"></script>
+    <script src="scripts/views.js"></script>
+    <script src="scripts/calendar.js"></script>
+    <link rel="stylesheet" href="styles/calendar-css.css">
+    <title>SoftUni Calendar</title>
+</head>
+<body>
+    <main>
+        <header id="menu">
+            <a href="#" id="linkHome">Home</a>
+            <a href="#" id="linkLogin">Login</a>
+            <a href="#" id="linkRegister">Register</a>
+            <a href="#" id="linkListCalendar">Calendar</a>
+            <a href="#" id="linkListMyLectures">My Lectures</a>
+            <a href="#" id="linkLogout">Logout</a>
+        </header>
+
+        <section id="loadingBox">Loading ...</section>
+        <section id="infoBox">Info</section>
+        <section id="errorBox">Error</section>
+
+        <section id="viewGuestHome">
+           <h1>Welcome to SoftUni Calendar!</h1>
+            <p>Please <a href="#" id="linkToLogin">login</a> to access the site.</p>
+        </section>
+
+        <section id="viewLogin">
+            <h1>Please login</h1>
+            <form id="formLogin">
+                <div>Username:</div>
+                <div><input type="text" name="username" required /></div>
+                <div>Password:</div>
+                <div><input type="password" name="passwd" required /></div>
+                <div>
+                    <input type="button" id="buttonLoginUser" value="Login" />
+                    <span>or</span>
+                    <a href="#" id="linkLoginToRegister">Register</a>
+                </div>
+            </form>
+        </section>
+
+        <section id="viewRegister">
+            <h1>Please register here</h1>
+            <form id="formRegister">
+                <div>Username:</div>
+                <div><input type="text" name="username" required /></div>
+                <div>Password:</div>
+                <div><input type="password" name="passwd" required /></div>
+                <div>Confirm Password:</div>
+                <div><input type="password" name="passwd-confirm" required /></div>
+                <div>
+                    <input type="button"id="buttonRegisterUser" value="Register" />
+                    <span>or</span>
+                    <a href="#" id="linkRegToLogin">Login</a>
+                </div>
+            </form>
+        </section>
+
+        <section id="viewUserHome">
+            <h1>Welcome,<span id="loggedInUser"></span></h1>
+            <p>Navigate to <a href="#" id="linkHomeToCalendar">Calendar</a> or add a <a href="#" id="linkHomeToAddLect">new Lecture</a>.</p>
+        </section>
+
+        <section id="listCalendar">
+            <h1>Calendar</h1>
+            <div><input type="button" id="buttonAddEvent" value="Add Event" /></div>
+            <ul id="listItem">
+                <li class="item" data-id="note_id">
+                    <a href="#">
+                        <h2 class="title">Note Title#1</h2>
+                        <p class="text">Note Text#1</p>
+                        <div class="author" title="author">Author</div>
+                        <div class="deadline" title="deadline">01-02-1990</div>
+                    </a>
+                    <button class="edit">Edit</button>
+                    <button class="delete">Delete</button>
+                </li>
+            </ul>
+        </section>
+
+        <section id="listMyCalendar">
+            <h1>My Calendar</h1>
+            <div><input type="button" id="buttonAddMyEvent" value="Add Event" /></div>
+            <ul id="listMyItem">
+                <li class="item" data-id="note_id">
+                    <a href="#">
+                        <h2 class="title">Note Title#1</h2>
+                        <p class="text">Note Text#1</p>
+                        <div class="author" title="author">Author</div>
+                        <div class="deadline" title="deadline">01-02-1990</div>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <section id="viewDetailsLecture">
+            <h1>Lecture</h1>
+            <form id="formDetailsLecture">
+                <h2><i class="fa fa-file"></i>&nbsp;Exam Preparation</h2>
+                <br>
+                <h4><i class="fa fa-calendar-plus-o"></i>&nbsp;<b>Starts on</b>: 2016-03-16T18:00:00</h4>
+                <h4><i class="fa fa-calendar-check-o"></i>&nbsp;<b>ENDS ON</b>: 2016-03-16T22:00:00</h4>
+                <br>
+                <h3><i class="fa fa-user"></i>&nbsp;Lecturer: SoftUni-Team</h3>
+                <div><input type="button" id="buttonCancelReadMore" value="Cancel" /></div>
+            </form>
+        </section>
+
+        <section id="addLecture">
+            <h1>Add new lecture</h1>
+            <form id="formCreateLecture">
+                <div>Title:</div>
+                <div><input type="text" name="title" required /></div>
+                <div>Start:</div>
+                <div><input type="text" name="start" required /></div>
+                <div>End:</div>
+                <div><input type="text" name="end" required /></div>
+                <div><input type="button" id="buttonCreateLecture" value="Add note" /></div>
+                <div><input type="button" id="buttonCancelCreateLecture" value="Cancel" /></div>
+            </form>
+        </section>
+
+        <section id="editLecture">
+            <h1>Edit Lecture</h1>
+            <form id="formEditLecture">
+                <div><input type="hidden" name="id" required /></div>
+                <div><input type="hidden" name="publisher" required /></div>
+                <div>Title:</div>
+                <div><input type="text" name="title" required /></div>
+                <div>Start:</div>
+                <div><input type="text" name="start" required /></div>
+                <div>End:</div>
+                <div><input type="text" name="end" required /></div>
+                <div><input type="button" id="buttonEditLecture" value="Edit note" /></div>
+                <div><input type="button" id="buttonCancelEditLecture" value="Cancel" /></div>
+            </form>
+        </section>
+
+        <section id="deleteLectureView">
+            <h1>Delete Lecture</h1>
+            <form id="formDeleteNote">
+                <div><input type="hidden" name="id" required /></div>
+                <div><input type="hidden" name="publisher" required /></div>
+                <div>Title:</div>
+                <div><input type="text" name="title" disabled /></div>
+                <div>Start:</div>
+                <div><input type="text" name="start" disabled /></div>
+                <div>End:</div>
+                <div><input type="text" name="end" disabled /></div>
+                <div><input type="button" id="buttonDeleteLecture" value="Delete Lecture" /></div>
+                <div><input type="button" id="buttonCancelDeleteLecture" value="Cancel" /></div>
+            </form>
+        </section>
+
+        <script>
+            startApp();
+        </script>
+    </main>
+</body>
+</html>
